@@ -1,0 +1,8 @@
+all:
+  children:
+    prod:
+      hosts:
+        client:
+          ansible_host: 192.168.99.11
+          ansible_password: vagrant
+          ansible_user: vagrant

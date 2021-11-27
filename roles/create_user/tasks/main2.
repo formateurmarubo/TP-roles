@@ -1,0 +1,16 @@
+---
+# tasks file for web
+- name: install apache and php last version for (Debian os family)
+  vars: 
+      user: admin
+  tasks:
+    - name: Installation des dépendances
+      yum: name={{ item }} update_cache=yes state=latest
+      with_items:
+        - vim
+        - htop
+        - git
+    - name: Création d'un utilisateur
+      user: name={{ user} } comment='Mon nouvel utilisateur' shell=/usr/bin/bash
+    - name: Ajout de la clé SSH
+      authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

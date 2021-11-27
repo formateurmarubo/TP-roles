@@ -1,0 +1,10 @@
+---
+# tasks file for roles/nginx
+- name: Installation de nginx
+  yum: name=nginx state=latest 
+
+- name: Start nginx and enable service nginx
+  service: name=nginx state=started enabled=true
+
+- name: index.html copy
+  template: src=index.html.j2  dest=/usr/share/nginx/html/index.html

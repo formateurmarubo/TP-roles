@@ -1,0 +1,6 @@
+---
+# tasks create user
+- name: creation user 
+  user: name={{ my_user }} comment='my new user' shell=/usr/bin/bash
+- name: ajout clef ssh
+  authorized_key: user={{ my_user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
